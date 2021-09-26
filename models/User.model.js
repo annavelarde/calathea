@@ -4,9 +4,28 @@ const { Schema, model } = require("mongoose");
 const userSchema = new Schema({
   username: {
     type: String,
+    required: true,
     // unique: true -> Ideally, should be unique, but its up to you
   },
-  password: String,
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  image: {
+    type: String,
+    default:
+      "https://res.cloudinary.com/dlfxinw9v/image/upload/v1631037631/default-profile-picture_sohcwq.png",
+  },
+  location: {
+    type: String,
+    required: false,
+  },
+  // socialMedia: { type: Array },         we will decide later on!!!
 });
 
 const User = model("User", userSchema);
