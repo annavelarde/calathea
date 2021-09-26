@@ -26,21 +26,21 @@ jobLocation: String? -->
 ## PUBLICATIONS/POST:
 
 --Post
-image: String ? Optional
-title: String? Optional
-text: String!
-user: User!
-date: Date!
-hashtag: Hashtag? Optional
+image: String ? Optional ✅
+title: String? Optional ✅
+text: String! ✅
+user: User! ✅
 
---Hashtag
+hashtag: Hashtag? Optional✅
 text: String!
 
 Comments:
-text: String!
-user: User!
-post: Post!
-date: Date!
+text: String!✅
+author: User!✅
+post: Post!---------????? Important to check cuz it wasn't there ✅
+date: Date! ✅
+
+date: Date!✅
 
 ---
 
