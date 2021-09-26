@@ -1,3 +1,5 @@
+<!-- @format -->
+
 < CHALATEA APP > Module 2 Week 3 day 1
 //MVC - MODEL VIEWS CONTROLER//
 
@@ -44,12 +46,12 @@ date: Date!✅
 
 ---
 
-GET / Home Page
+GET / Home Page ✅
 
 GET / Signup
 POST / Signup
 
-GET / Login
+GET / Login ✅
 POST / Login
 GET / Logout
 
@@ -71,8 +73,6 @@ POST / add-comment
 
 POST / add-image
 
-GET / one-sec
-
-GET / map-view
+<!-- GET / map-view IS IT  NECEESSARY????-->
 
 ✅
