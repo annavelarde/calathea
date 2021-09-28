@@ -48,8 +48,10 @@ date: Date!✅
 
 GET / Home Page ✅
 
-GET / Signup
-POST / Signup
+GET / Signup ✅
+POST / Signup ✅
+
+<!-- - Martes, 28.09 Done until line 112 GET and POST --Signup-- -->
 
 GET / Login ✅
 POST / Login
@@ -76,3 +78,9 @@ POST / add-image
 <!-- GET / map-view IS IT  NECEESSARY????-->
 
 ✅
+
+<!-- TODO'S
+
+- Styling de ICON BRAND in Layout.hbs
+- Styling the SIGNUP hbs with the BOOTSTRAP FORM
+-->
