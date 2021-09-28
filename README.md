@@ -76,3 +76,8 @@ POST / add-image
 <!-- GET / map-view IS IT  NECEESSARY????-->
 
 ✅
+
+videos:
+Module 2 Week 3 day 1 ✅
+Module 2 Week 3 day 2
+Module 2 Week 3 day 3
