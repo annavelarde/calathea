@@ -54,8 +54,11 @@ POST / Signup ✅
 <!-- - Martes, 28.09 Done until line 112 GET and POST --Signup-- -->
 
 GET / Login ✅
-POST / Login
-GET / Logout
+
+<!-- - Jueves, 30.09 Done Log in and Log Out. -- -->
+
+POST / Login ✅
+GET / Logout ✅
 
 POST / update-profile
 POST / update-password
@@ -81,6 +84,9 @@ POST / add-image
 
 <!-- TODO'S
 
-- Styling de ICON BRAND in Layout.hbs
-- Styling the SIGNUP hbs with the BOOTSTRAP FORM
+- Styling de ICON BRAND in Layout.hbs and NavBar
+- Styling the SIGNUP hbs with the BOOTSTRAP FORM ✅
+- Create folder Profile and their files Home profile, update password and update profile.
+- Home Page design with functionality and linking the API.
+- Design: Photo searching, Brand design, color consistency.
 -->
