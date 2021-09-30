@@ -30,9 +30,23 @@
 			</a>
 			<div class="navbar-nav">
 				<a class="nav-item nav-link active" href="/">Home</a>
-				<a class="nav-item nav-link" href="/auth/signup">Sign Up</a>
-				<a class="nav-item nav-link" href="/">Log In</a>
+				{{! <a class="nav-item nav-link" href="/auth/signup">Sign Up</a>
+				<a class="nav-item nav-link" href="/auth/login">Log In</a>
+				<a class="nav-item nav-link" href="/auth/logout">Log Out</a> }}
+
+				{{#if user}}
+
+					<a class="nav-item nav-link" href="/profile">Go to profile</a>
+					<a class="nav-item nav-link" href="/auth/logout">Log Out</a>
+					<p class="nav-item">Hello {{user.username}}</p>
+					{{! ☝🏻 estilizarlo y toda la navbar }}
+
+				{{else}}
+					<a class="nav-item nav-link" href="/auth/login">Log In</a>
+					<a class="nav-item nav-link" href="/auth/signup">Sign Up</a>
+				{{/if}}
 			</div>
+
 		</nav>
 		{{! <nav class="navbar navbar-expand sticky-top navbar-dark bg-primary">
 			<a class="navbar-brand" href="/">
