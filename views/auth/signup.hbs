@@ -1,54 +1,80 @@
-{{! <form class="form-signin">
-	<div class="text-center mb-4">
-		<img
-			class="mb-4"
-			src="/docs/4.4/assets/brand/bootstrap-solid.svg"
-			alt=""
-			width="72"
-			height="72"
-		/>
-		<h1 class="h3 mb-3 font-weight-normal">Floating labels</h1>
-		<p>Build form controls with floating labels via the
-			<code>:placeholder-shown</code>
-			pseudo-element.
-			<a href="https://caniuse.com/#feat=css-placeholder-shown">Works in
-				latest Chrome, Safari, and Firefox.</a></p>
-	</div>
+<main class="container-signUp">
+	<form class="form-signup" method="POST" action="/auth/signup">
+		<div class="text-center mb-4">
+			<img
+				class="iconForm mb-4"
+				src="http://cdn.onlinewebfonts.com/svg/img_215059.png"
+				alt=""
+				width="72"
+				height="72"
+			/>
+			<h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+		</div>
 
-	<div class="form-label-group">
-		<input
-			type="email"
-			id="inputEmail"
-			class="form-control"
-			placeholder="Email address"
-			required=""
-			autofocus=""
-		/>
-		<label for="inputEmail">Email address</label>
-	</div>
+		<div class="form-floating">
+			<input
+				name="username"
+				type="name"
+				id="inputName"
+				class="form-control"
+				placeholder="User Name"
+				value="{{username}}"
+				required=""
+				autofocus=""
+			/>
+			{{! <label class="labelForm" for="inputName">User Name</label> }}
+		</div>
 
-	<div class="form-label-group">
-		<input
-			type="password"
-			id="inputPassword"
-			class="form-control"
-			placeholder="Password"
-			required=""
-		/>
-		<label for="inputPassword">Password</label>
-	</div>
+		<div class="form-floating">
+			<input
+				name="email"
+				type="email"
+				id="inputEmail"
+				class="form-control"
+				placeholder="name@example.com"
+				value="{{email}}"
+				required=""
+				autofocus=""
+			/>
+			{{! <label for="inputEmail">Email address</label> }}
+		</div>
 
-	<div class="checkbox mb-3">
-		<label>
-			<input type="checkbox" value="remember-me" />
-			Remember me
-		</label>
-	</div>
-	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-	<p class="mt-5 mb-3 text-muted text-center">© 2017-2019</p>
-</form> }}
+		<div class="form-floating">
+			<input
+				name="password"
+				type="password"
+				id="inputPassword"
+				class="form-control"
+				placeholder="Password (min. 8 characters)"
+				required=""
+			/>
+			{{! <label for="inputPassword">Password
+				<span class="text-muted">Min. 8 characters</span></label> }}
+		</div>
 
-<h1>Signup page</h1>
+		<div class="form-floating">
+			<input
+				name="location"
+				type="location"
+				id="inputLocation"
+				class="form-control"
+				placeholder="Insert your country"
+				value="{{location}}"
+				required=""
+				autofocus=""
+			/>
+			{{! <label for="inputLocation">Location</label> }}
+		</div>
+
+		<button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+		<p class="mt-2 mb-3 text-muted text-center">© 2021</p>
+	</form>
+
+</main>
+
+{{! Lo de abajo es el formulario Sign Up original }}
+
+{{!-- <h1>Signup page</h1>
 
 <form method="POST" action="/auth/signup">
 	<br />
@@ -94,7 +120,7 @@
 	<br />
 
 	<button type="submit">Sign up</button>
-</form>
+</form> --}}
 
 {{#if errorMessage}}
 	<p style="color:red">{{errorMessage}}</p>
