@@ -1,3 +1,5 @@
+/** @format */
+
 const router = require("express").Router();
 
 // ℹ️ Handles password encryption
@@ -21,16 +23,33 @@ router.get("/signup", isLoggedOut, (req, res) => {
 router.post("/signup", isLoggedOut, (req, res) => {
   const { name, email, password, image, location } = req.body;
 
-  if (!username) {
-    return res
-      .status(400)
-      .render("auth/signup", { errorMessage: "Please provide your username." });
+  // if any of those inputs is blank it should fail
+  if (!email || !username || !location) {
+    res.render("auth/signup", {
+      errorMessage:
+        "Please, fill in the following : Name, E-mail and Location.",
+      ...req.body, // spread
+    });
+    return;
   }
+  // password thats smaller 8 characters
 
   if (password.length < 8) {
-    return res.status(400).render("auth/signup", {
-      errorMessage: "Your password needs to be at least 8 characters long.",
+    res.render("auth/signup", {
+      errorMessage: "The password must at least contain 8 characters.",
+      ...req.body,
     });
+    return;
+  }
+
+  // password must contain at least one number
+
+  if (!/\d/g.test(password)) {
+    res.render("auth/signup", {
+      errorMessage: "Your password has no number",
+      ...req.body,
+    });
+    return;
   }
 
   //   ! This use case is using a regular expression to control for special characters and min length
@@ -45,13 +64,13 @@ router.post("/signup", isLoggedOut, (req, res) => {
   }
   */
 
-  // Search the database for a user with the username submitted in the form
-  User.findOne({ username }).then((found) => {
+  // Search the database for a user with the Email submitted in the form
+  User.findOne({ email }).then((found) => {
     // If the user is found, send the message username is taken
     if (found) {
       return res
         .status(400)
-        .render("auth.signup", { errorMessage: "Username already taken." });
+        .render("auth/signup", { errorMessage: "Email already exist." });
     }
 
     // if user is not found, create a new user - start with hashing the password
@@ -62,6 +81,8 @@ router.post("/signup", isLoggedOut, (req, res) => {
         // Create a user and save it in the database
         return User.create({
           username,
+          location,
+          email,
           password: hashedPassword,
         });
       })
@@ -79,7 +100,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
         if (error.code === 11000) {
           return res.status(400).render("auth/signup", {
             errorMessage:
-              "Username need to be unique. The username you chose is already in use.",
+              "Email need to be unique. The Email you chose is already in use.",
           });
         }
         return res
@@ -97,9 +118,9 @@ router.post("/login", isLoggedOut, (req, res, next) => {
   const { username, password } = req.body;
 
   if (!username) {
-    return res
-      .status(400)
-      .render("auth/login", { errorMessage: "Please provide your username." });
+    return res.status(400).render("auth/login", {
+      errorMessage: "Please provide your username.",
+    });
   }
 
   // Here we use the same logic as above
