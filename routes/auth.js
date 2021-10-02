@@ -21,7 +21,7 @@ router.get("/signup", isLoggedOut, (req, res) => {
 });
 
 router.post("/signup", isLoggedOut, (req, res) => {
-  const { name, email, password, image, location } = req.body;
+  const { username, email, password, image, location } = req.body;
 
   // if any of those inputs is blank it should fail
   if (!email || !username || !location) {

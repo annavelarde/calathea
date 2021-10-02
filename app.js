@@ -22,24 +22,29 @@ require("./config")(app);
 
 const projectName = "project2";
 const capitalized = (string) =>
-	string[0].toUpperCase() + string.slice(1).toLowerCase();
+  string[0].toUpperCase() + string.slice(1).toLowerCase();
 
 app.locals.title = `${capitalized(projectName)} created with IronLauncher`;
 
 app.use((req, res, next) => {
-	if (req.session.user) {
-		res.locals.user = req.session.user;
-	}
-	next();
+  if (req.session.user) {
+    res.locals.user = req.session.user;
+  }
+  next();
 });
 
 // 👇 Start handling routes here
+//const pondriamos los routes o los archivos .js. Y en la linea 46, se tiene que pasar el views.
 const index = require("./routes/index");
-app.use("/", index);
-
 const authRoutes = require("./routes/auth");
 const isLoggedIn = require("./middleware/isLoggedIn");
+const profileRoutes = require("./routes/profile.router");
+const postsRoutes = require("./routes/posts.router");
+
+app.use("/", index);
 app.use("/auth", authRoutes);
+app.use("/profile", profileRoutes);
+app.use("/posts", postsRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
