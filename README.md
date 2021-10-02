@@ -60,12 +60,12 @@ GET / Login ✅
 POST / Login ✅
 GET / Logout ✅
 
-POST / update-profile
-POST / update-password
+POST / update-profile✅
+POST / update-password✅
 
-POST / delete-account
+POST / delete-account✅
 
-GET / profile
+GET / profile ✅
 
 GET / see-posts
 POST / add-post
@@ -89,4 +89,6 @@ POST / add-image
 - Create folder Profile and their files Home profile, update password and update profile.
 - Home Page design with functionality and linking the API.
 - Design: Photo searching, Brand design, color consistency.
+-Update Profile.hbs => once the button "update profile" has being clicked, we want to see a pop up or redirect it to profile
+-Post Issues: Delete post because it's not working. Also, go though all the views> post information and update it.
 -->

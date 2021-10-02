@@ -1,0 +1,45 @@
+{{#if post.title}}
+  <h1>{{post.title}}</h1>
+{{/if}}
+
+<h3>
+  by
+  {{#if post.author}}
+  {{post.author.username}}
+  {{else}}
+  author no longer among us 💀
+  {{/if}}
+</h3>
+
+{{post.text}}
+
+{{#if isAuthor}}
+  <div>
+    <a href="/posts/{{post._id}}/edit">Edit this post</a>
+    <br>
+    <a href="/posts/{{post._id}}/delete">Delete this post</a>
+  </div>
+{{/if}}
+
+{{#if post.comments}}
+  <section class="comments">
+    <p>Comments: 👇</p>
+    {{#each post.comments}}
+      <div style="font-size: .8rem; margin: 0">by: {{this.author.username}}</div>
+      <p style="margin: 1rem">{{this.text}}</p>
+      {{#if this.isAuthor}}
+        <a href="/comments/{{../post._id}}/{{this._id}}/delete"
+          style="color: red">Delete your comment</a>
+      {{/if}}
+    {{/each}}
+
+  </section>
+{{/if}}
+<form method="POST" action="/comments/{{post._id}}/new">
+
+  <h2>Add a new comment</h2>
+  <label>
+    <input type="text" placeholder="Write your comment" name="text" />
+  </label>
+  <button type="submit">Write comment</button>
+</form>
