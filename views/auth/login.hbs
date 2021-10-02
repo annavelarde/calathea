@@ -11,23 +11,22 @@
 	<button type="submit">Submit</button>
 </form> }}
 
-<section class="form my-4 mx-5">
+<section class="form my-5 mx-1">
 	<div class="container">
 		<div class="row no-gutters">
-			<div class="col-lg-5">
+			<div class="">
 				<img
-					class="imgLogin"
+					class="imgLogin img-fluid"
 					src="https://media.sciencephoto.com/image/c0113951/800wm/C0113951-Calathea_zebrina.jpg"
 					alt=""
-					class="img-fluid"
 				/>
 			</div>
-			<div class="col-lg-7 px-5 pt-5">
+			<div class="px-5 pt-5">
 				<h1 class="font-weight-bold py-3">Calathea</h1>
-				<h4>Sign into your account</h4>
+				<h4 class="mb-4">Sign into your account</h4>
 				<form action="/auth/login" method="POST">
 					<div class="form-row">
-						<div class="input-group mb-3 col-lg-7 my-3 p-4">
+						<div class="input-group mb-2">
 							<span class="input-group-text" id="basic-addon1">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +57,7 @@
 						</div>
 					</div>
 					<div class="form-row">
-						<div class="input-group mb-3 col-lg-7 my-3 p-4">
+						<div class="input-group mb-2">
 							<span class="input-group-text" id="basic-addon1">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -85,11 +84,15 @@
 						</div>
 					</div>
 					<div class="form-row">
-						<div class="col-lg-7">
-							<button class="w-100 btn btn-lg btn-primary mt-2 mb-3" type="submit">Login</button>
-							{{!-- <button type="submit" class="btn1">Login</button>
-						</div> --}}
+
+						<button
+							class="w-100 btn btn-lg btn-primary mt-2 mb-2"
+							type="submit"
+						>Login</button>
+						{{! <button type="submit" class="btn1">Login</button>
+						</> }}
 					</div>
+					<br />
 					<a href="#">Forgot password?</a>
 					<p>Don't have an account?
 						<a href="/auth/signup">Sign up here</a></p>
