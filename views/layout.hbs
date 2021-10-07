@@ -10,6 +10,10 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>Calathea {{title}}</title>
   </head>
@@ -20,7 +24,7 @@
     >
       <a class="navbar-brand" href="/">
         <img
-          src="/public/images/Untitled-1.svg"
+          src="https://post.greatist.com/wp-content/uploads/sites/2/2020/06/168403-GRT-9-Calathea.png"
           width="100vw"
           height="auto"
           class="d-inline-block align-center"
@@ -37,6 +41,7 @@
         {{#if user}}
 
           <a class="nav-item nav-link" href="/profile">Go to profile</a>
+          <a class="nav-item nav-link" href="/posts/create">Create a Post</a>
           <a class="nav-item nav-link" href="/auth/logout">Log Out</a>
           <p class="nav-item">Hello {{user.username}}</p>
           {{! ☝🏻 estilizarlo y toda la navbar }}

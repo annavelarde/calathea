@@ -1,19 +1,19 @@
 <form action="/profile/update-profile" method="POST">
-  <label>Location
-    <input type="text" name="location" value="{{location}}" />
-  </label>
-  <br />
-  <label>Name
-    <input type="text" name="username" value="{{username}}" />
-  </label>
-  <br />
-  <label>Email
-    <input type="text" name="email" value="{{email}}" />
-  </label>
-  <br />
-  <button type="submit">Update Profile</button>
+	<label>Location
+		<input type="text" name="location" value="{{location}}" />
+	</label>
+	<br />
+	<label>Name
+		<input type="text" name="username" value="{{username}}" />
+	</label>
+	<br />
+	<label>Email
+		<input type="text" name="email" value="{{email}}" />
+	</label>
+	<br />
+	<button type="submit">Update Profile</button>
 </form>
 
 {{#if errorMessage}}
-  <p style="color:red">{{errorMessage}}</p>
+	<p style="color:red">{{errorMessage}}</p>
 {{/if}}
