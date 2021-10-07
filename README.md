@@ -92,3 +92,7 @@ POST / add-image
 -Update Profile.hbs => once the button "update profile" has being clicked, we want to see a pop up or redirect it to profile
 -Post Issues: Delete post because it's not working. Also, go though all the views> post information and update it.
 -->
+
+autentication: through a session. you are how you are
+autheritation: show the page.
+validation:
