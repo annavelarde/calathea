@@ -20,6 +20,14 @@ p {
 }
 
 /* NAVIGATION BAR */
+.h2-isotypo {
+	/* text-align: ; */
+	color: #f7f7f7;
+	/* margin: 5px; */
+	font-weight: 400;
+	font-size: 1.5em;
+	border: 1px solid;
+}
 .bgcolor {
 	background-color: #085548;
 }
