@@ -64,8 +64,8 @@ p {
 	box-shadow: 12px 8px 22px;
 }
 .imgLogin {
-	border-top-left-radius: 30px;
-	border-bottom-left-radius: 30px;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
 }
 
 /*Home Page*/
