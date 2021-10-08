@@ -12,10 +12,10 @@ const commentSchema = new mongoose.Schema(
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "User",
 		}, // this will eventually change
-		// post: {
-		//   type: mongoose.Schema.Types.ObjectId,
-		//   ref: "Post",
-		// },   IMPORTANT TO CHECK!!!!!!
+		post: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "Post",
+		}, //IMPORTANT TO CHECK!!!!!!
 	},
 	{
 		timestamps: true,
