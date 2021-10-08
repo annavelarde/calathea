@@ -16,12 +16,12 @@ function dynamicPostMiddleware(req, res, next) {
 		.populate([
 			{ path: "author" }, // post.author
 		])
-		// .populate({ path: "comments" })
-		// .populate({ path: "author" })
-		// .populate("author")
-		// .populate("comments")
-		// .populate("author comments") // i want the post author, the comment, and, from the comment, the author of the comment
-		// .populate("author comments")
+		//.populate({ path: "comments" })
+		//.populate({ path: "author" })
+		//.populate("author")
+		//.populate("comments")
+		//.populate("author comments") // i want the post author, the comment, and, from the comment, the author of the comment
+		//.populate("author comments")
 		.then((singlePost) => {
 			if (!singlePost) {
 				return res.redirect("/");
