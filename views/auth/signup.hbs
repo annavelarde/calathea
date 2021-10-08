@@ -3,10 +3,10 @@
 		<div class="text-center mb-4">
 			<img
 				class="iconForm mb-4"
-				src="http://cdn.onlinewebfonts.com/svg/img_215059.png"
+				src="/images/UserProfileImg.png"
 				alt=""
-				width="72"
-				height="72"
+				width="96"
+				height="96"
 			/>
 			<h1 class="h3 mb-3 fw-normal">Create your Account</h1>
 		</div>
@@ -131,56 +131,6 @@
 	</form>
 
 </main>
-
-{{! Lo de abajo es el formulario Sign Up original }}
-
-{{!-- <h1>Signup page</h1>
-
-<form method="POST" action="/auth/signup">
-	<br />
-	<label>Name
-		<input
-			type="text"
-			name="username"
-			placeholder="Write your Name"
-			value="{{username}}"
-		/></label>
-
-	<br />
-	<br />
-	<label>Email
-		<input
-			type="text"
-			name="email"
-			placeholder="Write your Email"
-			value="{{email}}"
-		/>
-	</label>
-	<br />
-	<br />
-	<label>Password (min 8 characters)
-		<input
-			type="password"
-			name="password"
-			placeholder="Write your Password"
-		/>
-	</label>
-	<br />
-	<br />
-	<label>Location:
-		<input
-			type="text"
-			name="location"
-			placeholder="Your location"
-			value="{{location}}"
-		/>
-	</label>
-
-	<br />
-	<br />
-
-	<button type="submit">Sign up</button>
-</form> --}}
 
 {{#if errorMessage}}
 	<p style="color:red">{{errorMessage}}</p>
