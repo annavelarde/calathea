@@ -1,20 +1,73 @@
-<form action="/posts/create" method="POST">
-  <h2>Create Post</h2>
-  <label>Title
-    <input type="text" name="title" placeholder="Totally optional" />
-  </label>
-  <br />
-  <label>Text of your post
-    <input type="text" name="text" placeholder="Totally NOT optional" />
-  </label>
-  <br />
-  <label>Tags
-    <input
-      type="text"
-      name="tags"
-      placeholder="Tags Associated with your post"
-    />
-  </label>
-  <br />
-  <button type="submit">Create Post</button>
-</form>
+{{! <form action="/posts/create" method="POST">
+	<h2>Create Post</h2>
+	<label>Title
+		<input type="text" name="title" placeholder="Totally optional" />
+	</label>
+	<br />
+	<label>Text of your post
+		<input type="text" name="text" placeholder="Totally NOT optional" />
+	</label>
+	<br />
+	<label>Tags
+		<input type="text" name="tags" placeholder="Tags" />
+	</label>
+	<br />
+	<button type="submit">Create a Post</button>
+</form> }}
+
+<main class="container py-2">
+	<form  method="POST" action="/posts/create">
+		<div class="text-center mb-4">
+			<h1 class="h3 mb-3">Create a Post</h1>
+		</div>
+
+		<div class="mb-3">
+			<label class="form-label w-100" for="inputTitle">Title* <input
+				name="title"
+				type="text"
+				id="inputTitle"
+				class="form-control"
+				placeholder="Post Title"
+				required=""
+				autofocus=""
+			/>
+		</div>
+
+		<div class="mb-3">
+			<label class="form-label" for="inputPost">Your Post*</label>
+			<textarea
+				class="form-control"
+				name="text"
+				type="text"
+				id="inputPost"
+				cols="30"
+				rows="10"
+				required="true"
+			></textarea>
+		</div>
+		<div class="mb-3">
+			<label class="form-label" for="inputTag">Tags</label>
+			<input
+				type="text"
+				name="tags"
+				placeholder="Tags"
+				id="inputTag"
+				class="form-control"
+			/>
+		</div>
+		<div
+			class="btn-group d-block"
+			role="group"
+			aria-label="Basic mixed styles example"
+		>
+			<a class="btn btn-secondary btn-lg btn-block" href="/">Cancel</a>
+			<button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Post it</button>
+		</div>
+
+	</form>
+
+</main>
+
+{{#if errorMessage}}
+	<p style="color:red">{{errorMessage}}</p>
+{{/if}}
