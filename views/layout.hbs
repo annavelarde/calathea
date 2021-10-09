@@ -18,41 +18,49 @@
     <title>Calathea {{title}}</title>
   </head>
 
-	<body>
-		<nav
-			class="navbar navbar-expand navbar-dark bgcolor sticky-top d-flex justify-content-center"
-		>
-			<a class="navbar-brand justify-content-left" href="/">
-				<img
-					src="/images/CalaLogo.png"
-					width="20vw"
-					{{! height="auto" }}
-					class="d-inline-block align-center"
-					alt=""
-				></img>
-				<h2 class="h2-isotypo d-inline ">Calathea</h2>
-			</a>
-			<div class="navbar-nav">
-				<a class="nav-item nav-link active" href="/">Home</a>
-				{{! <a class="nav-item nav-link" href="/auth/signup">Sign Up</a>
-				<a class="nav-item nav-link" href="/auth/login">Log In</a>
-				<a class="nav-item nav-link" href="/auth/logout">Log Out</a> }}
-
-        {{#if user}}
-
-          <a class="nav-item nav-link" href="/profile">Go to profile</a>
-          <a class="nav-item nav-link" href="/posts/create">Create a Post</a>
-          <a class="nav-item nav-link" href="/auth/logout">Log Out</a>
-          <p class="nav-item">Hello {{user.username}}</p>
-          {{! ☝🏻 estilizarlo y toda la navbar }}
-
-        {{else}}
-          <a class="nav-item nav-link" href="/auth/login">Log In</a>
-          <a class="nav-item nav-link" href="/auth/signup">Sign Up</a>
-        {{/if}}
-      </div>
-
-    </nav>
+  <body>
+    <div class="container-fluid px-0">
+      <nav class="navbar navbar-expand-lg navbar-dark bgcolor py-0 px-4 d-flex justify-content-between">
+        <div>
+          <img src="/images/CalaLogo.png" alt="" width="14vw" class="d-inline-block align-center"></img>
+          <a class="navbar-brand" href="/"><strong><i>Calathea</i></strong></a>
+        </div>
+        <button
+          class="navbar-toggler mr-3"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        > <span class="navbar-toggler-icon"></span> </button>
+        {{! <div class="collapse navbar-collapse" id="navbarNav">
+          <a class="navbar-brand" href="/">
+          <img src="/images/CalaLogo.png" alt="" width="16vw" class="d-inline-block align-center"></img>
+          <h2 class="h2-isotypo d-inline">Calathea</h2>
+        </a>
+        </div> }}
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+            <a class="nav-item nav-link active" href="/">Home</a></li>
+            {{#if user}}
+              <li class="nav-item">
+                <a class="nav-link" href="/profile">Profile</a></li>
+              <li class="nav-item">
+                <a class="nav-link" href="/posts/create">My Posts</a></li>
+              <li class="nav-item right">
+                <a class="nav-link" href="/auth/logout">Log Out</a></li>
+            {{else}}
+              <li class="nav-item">
+                <a class="nav-link" href="/auth/login">Log In</a></li>
+              <li class="nav-item">
+                <a class="nav-link" href="/auth/signup">Sign Up</a></li>
+            {{/if}}
+          </ul>
+        </div>
+      </nav>
+    </div>
     {{! <nav class="navbar navbar-expand sticky-top navbar-dark bg-primary">
 			<a class="navbar-brand" href="/">
 				<img

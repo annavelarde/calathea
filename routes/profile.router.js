@@ -77,15 +77,23 @@ router.post("/update-password", isLoggedIn, (req, res) => {
   });
 });
 
-// Let's delete a specific account.
-router.get("/delete-account", isLoggedIn, (req, res) => {
-  User.findByIdAndDelete(req.session.user._id).then(() => {
-    req.session.destroy((errorMessage) => {
-      if (errorMessage) {
-        console.error("err:", errorMessage);
-      }
-      res.redirect("/");
-    });
+router.get("/delete-account", isLoggedIn, async (req, res) => {
+  const userId = req.session.user._id;
+
+  await User.findByIdAndDelete(userId);
+  await Comment.deleteMany({ user: userId });
+
+  const allPostsFromUser = await Post.find({ author: userId });
+  const allPostUserIds = allPostsFromUser.map((elem) => elem._id);
+
+  await Comment.deleteMany({ post: { $in: allPostUserIds } });
+  await Post.deleteMany({ _id: { $in: allPostUserIds } });
+
+  req.session.destroy((errorMessage) => {
+    if (errorMessage) {
+      console.error("err: ", errorMessage);
+    }
+    res.redirect("/profile");
   });
 });
 
