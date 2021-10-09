@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 const postSchema = new mongoose.Schema(
 	{
-		image: String,
+		imageUrl: String,
 		title: String,
 		text: {
 			type: String,
