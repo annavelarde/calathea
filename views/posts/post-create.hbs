@@ -16,11 +16,15 @@
 </form> }}
 
 <main class="container py-2">
-	<form  method="POST" action="/posts/create">
+	<form  method="POST" action="/posts/create" enctype="multipart/form-data">
 		<div class="text-center mb-4">
 			<h1 class="h3 mb-3">Create a Post</h1>
 		</div>
-
+<div class="form-group">
+        <label>Image:
+          <input type="file" name="post-cover-image" class="form-control-file" />
+        </label>
+      </div>
 		<div class="mb-3">
 			<label class="form-label w-100" for="inputTitle">Title* <input
 				name="title"

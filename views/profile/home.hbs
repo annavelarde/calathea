@@ -27,15 +27,33 @@
 <div>
 	<a href="/posts/create">Create a post</a>
 </div>
+<br />
+<h3>All Post list</h3>
 
-<hr />
-
-
+<div class="row">
 	{{#each allPosts}}
-	<div class="card col-md-4 mb3" style="max-width: 540px;"></div>
-		<a href="/posts/{{this._id}}">{{this.text}}</a>
-		<br />
+		<div class="col-md-4 mb-5">
+			<div class="card" style="width: 18rem;">
+				<img src="{{imageUrl}}" class="card-img-top" alt="{{title}}" />
+				<div class="card-body">
+					<h5 class="card-title">{{title}}</h5>
+					<p class="card-text">{{text}}</p>
+					<a
+						href="/posts/{{this._id}}"
+						class="btn btn-primary"
+					>{{this.text}}</a>
+				</div>
+			</div>
 		</div>
-
+	{{else}}
+		<p>There are no Posts yet!</p>
 	{{/each}}
+	<hr />
+</div>
 
+{{!-- {{#each allPosts}}
+	<hr />
+	<a href="/posts/{{this._id}}">{{this.text}}</a>
+	<br />
+
+{{/each}} --}}
