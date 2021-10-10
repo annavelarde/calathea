@@ -17,40 +17,38 @@
 </div> }}
 
 <div>
-	<a href="/profile/update-profile">Update Profile</a>
-	<br />
-	<a href="/profile/update-password">Update Password </a>
-	<br />
-	<a href="/profile/delete-account">Delete Account</a>
+  <a href="/profile/update-profile">Update Profile</a>
+  <br />
+  <a href="/profile/update-password">Update Password </a>
+  <br />
+  <a href="/profile/delete-account">Delete Account</a>
 </div>
 
 <div>
-	<a href="/posts/create">Create a post</a>
+  <a href="/posts/create">Create a post</a>
 </div>
 <br />
 <h3>All Post list</h3>
 
 <div class="row">
-	{{#each allPosts}}
-		<div class="col-md-4 mb-5">
-			<div class="card" style="width: 18rem;">
-				<img src="{{imageUrl}}" class="card-img-top" alt="{{title}}" />
-				<div class="card-body">
-					<h5 class="card-title">{{title}}</h5>
-					<p class="card-text">{{text}}</p>
-					<a
-						href="/posts/{{this._id}}"
-						class="btn btn-primary"
-					>{{this.text}}</a>
-				</div>
-			</div>
-		</div>
-	{{else}}
-		<p>There are no Posts yet!</p>
-	{{/each}}
-<<<<<<< HEAD
-=======
-	<hr />
+  {{#each allPosts}}
+    <div class="col-md-4 mb-5">
+      <div class="card" style="width: 18rem;">
+        <img src="{{imageUrl}}" class="card-img-top" alt="{{title}}" />
+        <div class="card-body">
+          <h5 class="card-title">{{title}}</h5>
+          <p class="card-text">{{text}}</p>
+          <a
+            href="/posts/{{this._id}}"
+            class="btn btn-primary"
+          >{{this.text}}</a>
+        </div>
+      </div>
+    </div>
+  {{else}}
+    <p>There are no Posts yet!</p>
+  {{/each}}
+  <hr />
 </div>
 
 {{!-- {{#each allPosts}}
@@ -59,4 +57,3 @@
 	<br />
 
 {{/each}} --}}
->>>>>>> dev
