@@ -39,6 +39,7 @@ router.get("/update-password", isLoggedIn, (req, res) => {
 });
 
 router.post("/update-password", isLoggedIn, (req, res) => {
+<<<<<<< HEAD
   const { oldPassword, newPassword } = req.body;
 
   if (oldPassword === newPassword) {
@@ -77,6 +78,50 @@ router.post("/update-password", isLoggedIn, (req, res) => {
       res.redirect("/profile");
     });
   });
+=======
+	const { oldPassword, newPassword } = req.body;
+
+	if (oldPassword === newPassword) {
+		res.render("profile/update-password", {
+			errorMessage:
+				"For security reasons, please do not use an old password",
+		}); //improve the errormessage
+		return;
+	}
+
+	User.findById(req.session.user._id).then((user) => {
+		const arePasswordsTheSame = bcrypt.compareSync(
+			oldPassword,
+			user.password,
+		);
+
+		if (!arePasswordsTheSame) {
+			return res.render("profile/update-password", {
+				errorMessage: "wrong credentials",
+			});
+		}
+
+		if (newPassword.length < 8 || !/\d/g.test(newPassword)) {
+			return res.render("profile/update-password", {
+				errorMessage:
+					"Your password must contain 8 characters and at least one number.",
+			});
+		}
+
+		const saltRounds = 10;
+		const salt = bcrypt.genSaltSync(saltRounds);
+		const hashPassword = bcrypt.hashSync(newPassword, salt);
+
+		User.findByIdAndUpdate(
+			user._id,
+			{ password: hashPassword },
+			{ new: true },
+		).then((updatedUser) => {
+			req.session.user = updatedUser;
+			res.redirect("/profile");
+		});
+	});
+>>>>>>> dev
 });
 
 // Let's delete a specific account.
@@ -92,6 +137,7 @@ router.post("/update-password", isLoggedIn, (req, res) => {
 // });
 
 router.get("/delete-account", isLoggedIn, async (req, res) => {
+<<<<<<< HEAD
   const userId = req.session.user._id;
 
   await Promise.all([
@@ -113,6 +159,29 @@ router.get("/delete-account", isLoggedIn, async (req, res) => {
 
     res.redirect("/profile");
   });
+=======
+	const userId = req.session.user._id;
+
+	await Promise.all([
+		User.findByIdAndDelete(userId),
+		Comment.deleteMany({ user: userId }),
+	]);
+	const arrOfPostsFromUser = await Post.find({ author: userId });
+	const getPostIds = arrOfPostsFromUser.map((e) => e._id);
+
+	await Promise.all([
+		Comment.deleteMany({ post: { $in: getPostIds } }),
+		Post.deleteMany({ _id: { $in: getPostIds } }),
+	]);
+
+	req.session.destroy((err) => {
+		if (err) {
+			console.error("err: ", err);
+		}
+
+		res.redirect("/profile");
+	});
+>>>>>>> dev
 });
 
 module.exports = router;
