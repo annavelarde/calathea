@@ -8,8 +8,9 @@
 							<form action="/posts/{{post._id}}/edit" method="POST">
 								<label>
 									<h1><p>Image</p></h1>
-									<input class="heighttext" type="text" name="title" value="{{post.imageUrl}}" style="width: 700px;"/>
 									<input type="file" name="post-cover-image" class="form-control-file"/>
+									{{!-- <input class="heighttext" type="text" name="title" value="{{post.imageUrl}}" style="width: 700px;"/> --}}
+									{{!-- <input type="file" name="post-cover-image" class="form-control-file"/> --}}
 								</label>
 								<hr>
 								<label>
