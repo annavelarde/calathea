@@ -130,15 +130,19 @@ router.post(
 	fileUploader.single("post-cover-image"),
 	(req, res) => {
 		const { title, text } = req.body;
+		let imageUrl;
+		if (req.file) {
+			imageUrl = req.file.path;
+		}
 
 		Post.create({
 			text,
 			title,
 			author: req.session.user._id,
-			imageUrl: req.file.path,
+			imageUrl,
 		}).then((createdPost) => {
 			console.log(createdPost);
-			res.redirect("/profile");
+			res.redirect("/");
 		});
 	},
 );
@@ -169,7 +173,7 @@ router.get(
 		await Post.findByIdAndDelete(req.params.id);
 		await Comment.deleteMany({ post: { $in: [req.post._id] } });
 
-		res.redirect("/profile");
+		res.redirect("/");
 	},
 );
 
