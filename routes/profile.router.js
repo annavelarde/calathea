@@ -8,9 +8,7 @@ const Comment = require("../models/Comments.model");
 const bcrypt = require("bcryptjs");
 
 router.get("/", isLoggedIn, (req, res) => {
-  Post.find({ user: req.session.user._id }).then((allPosts) => {
-    res.render("profile/home", { allPosts });
-  });
+  res.render("profile/home");
 });
 
 router.get("/update-profile", isLoggedIn, (req, res) => {
