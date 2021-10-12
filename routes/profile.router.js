@@ -8,79 +8,73 @@ const Comment = require("../models/Comments.model");
 const bcrypt = require("bcryptjs");
 
 router.get("/", isLoggedIn, (req, res) => {
-	Post.find({ user: req.session.user._id }).then((allPosts) => {
-		res.render("profile/home", { allPosts });
-	});
+  res.render("profile/home");
 });
 
 router.get("/update-profile", isLoggedIn, (req, res) => {
-	res.render("profile/update-profile", {
-		username: req.session.user.username, //check it fail!!!
-		email: req.session.user.email,
-		location: req.session.user.location,
-	});
+  res.render("profile/update-profile", {
+    username: req.session.user.username, //check it fail!!!
+    email: req.session.user.email,
+    location: req.session.user.location,
+  });
 });
 
 router.post("/update-profile", isLoggedIn, (req, res) => {
-	const { username, email, location } = req.body;
-	User.findByIdAndUpdate(
-		req.session.user._id,
-		{ username, email, location },
-		{ new: true },
-	).then((updatedUser) => {
-		// updates the user in the cookie. keeps the user in the db and the user in the session in sync
-		req.session.user = updatedUser;
-		res.redirect("/profile");
-	});
+  const { username, email, location } = req.body;
+  User.findByIdAndUpdate(
+    req.session.user._id,
+    { username, email, location },
+    { new: true }
+  ).then((updatedUser) => {
+    // updates the user in the cookie. keeps the user in the db and the user in the session in sync
+    req.session.user = updatedUser;
+    res.redirect("/profile");
+  });
 });
 
 router.get("/update-password", isLoggedIn, (req, res) => {
-	res.render("profile/update-password");
+  res.render("profile/update-password");
 });
 
 router.post("/update-password", isLoggedIn, (req, res) => {
-	const { oldPassword, newPassword } = req.body;
+  const { oldPassword, newPassword } = req.body;
 
-	if (oldPassword === newPassword) {
-		res.render("profile/update-password", {
-			errorMessage:
-				"For security reasons, please do not use an old password",
-		}); //improve the errormessage
-		return;
-	}
+  if (oldPassword === newPassword) {
+    res.render("profile/update-password", {
+      errorMessage: "For security reasons, please do not use an old password",
+    }); //improve the errormessage
+    return;
+  }
 
-	User.findById(req.session.user._id).then((user) => {
-		const arePasswordsTheSame = bcrypt.compareSync(
-			oldPassword,
-			user.password,
-		);
+  User.findById(req.session.user._id).then((user) => {
+    const arePasswordsTheSame = bcrypt.compareSync(oldPassword, user.password);
 
-		if (!arePasswordsTheSame) {
-			return res.render("profile/update-password", {
-				errorMessage: "wrong credentials",
-			});
-		}
+    if (!arePasswordsTheSame) {
+      return res.render("profile/update-password", {
+        errorMessage: "wrong credentials",
+      });
+    }
 
-		if (newPassword.length < 8 || !/\d/g.test(newPassword)) {
-			return res.render("profile/update-password", {
-				errorMessage:
-					"Your password must contain 8 characters and at least one number.",
-			});
-		}
+    if (newPassword.length < 8 || !/\d/g.test(newPassword)) {
+      return res.render("profile/update-password", {
+        errorMessage:
+          "Your password must contain 8 characters and at least one number.",
+      });
+    }
 
-		const saltRounds = 10;
-		const salt = bcrypt.genSaltSync(saltRounds);
-		const hashPassword = bcrypt.hashSync(newPassword, salt);
+    const saltRounds = 10;
+    const salt = bcrypt.genSaltSync(saltRounds);
+    const hashPassword = bcrypt.hashSync(newPassword, salt);
 
-		User.findByIdAndUpdate(
-			user._id,
-			{ password: hashPassword },
-			{ new: true },
-		).then((updatedUser) => {
-			req.session.user = updatedUser;
-			res.redirect("/profile");
-		});
-	});
+    User.findByIdAndUpdate(
+      user._id,
+      { password: hashPassword },
+      { new: true }
+    ).then((updatedUser) => {
+      req.session.user = updatedUser;
+      res.redirect("/profile");
+    });
+  });
 });
 
 // Let's delete a specific account.
@@ -96,27 +90,27 @@ router.post("/update-password", isLoggedIn, (req, res) => {
 // });
 
 router.get("/delete-account", isLoggedIn, async (req, res) => {
-	const userId = req.session.user._id;
+  const userId = req.session.user._id;
 
-	await Promise.all([
-		User.findByIdAndDelete(userId),
-		Comment.deleteMany({ user: userId }),
-	]);
-	const arrOfPostsFromUser = await Post.find({ author: userId });
-	const getPostIds = arrOfPostsFromUser.map((e) => e._id);
+  await Promise.all([
+    User.findByIdAndDelete(userId),
+    Comment.deleteMany({ user: userId }),
+  ]);
+  const arrOfPostsFromUser = await Post.find({ author: userId });
+  const getPostIds = arrOfPostsFromUser.map((e) => e._id);
 
-	await Promise.all([
-		Comment.deleteMany({ post: { $in: getPostIds } }),
-		Post.deleteMany({ _id: { $in: getPostIds } }),
-	]);
+  await Promise.all([
+    Comment.deleteMany({ post: { $in: getPostIds } }),
+    Post.deleteMany({ _id: { $in: getPostIds } }),
+  ]);
 
-	req.session.destroy((err) => {
-		if (err) {
-			console.error("err: ", err);
-		}
+  req.session.destroy((err) => {
+    if (err) {
+      console.error("err: ", err);
+    }
 
-		res.redirect("/profile");
-	});
+    res.redirect("/profile");
+  });
 });
 
 module.exports = router;
