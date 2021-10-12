@@ -15,6 +15,9 @@ const express = require("express");
 // https://www.npmjs.com/package/hbs
 const hbs = require("hbs");
 
+// Handles the Partials
+hbs.registerPartials(__dirname + "/views/partials");
+
 const app = express();
 
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
@@ -34,7 +37,7 @@ app.use((req, res, next) => {
 });
 
 // 👇 Start handling routes here
-//const pondriamos los routes o los archivos .js. Y en la linea 46, se tiene que pasar el views.
+//const pondriamos los routes o los archivos .js. Y en la linea 45, se pasan los Views que aparecerán/se mostrarán en esas Routes.
 const index = require("./routes/index");
 const authRoutes = require("./routes/auth");
 const isLoggedIn = require("./middleware/isLoggedIn");

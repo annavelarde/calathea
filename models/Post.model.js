@@ -4,7 +4,12 @@ const mongoose = require("mongoose");
 
 const postSchema = new mongoose.Schema(
 	{
-		imageUrl: String,
+		imageUrl: {
+			type: String,
+			default:
+				"https://res.cloudinary.com/dlfxinw9v/image/upload/v1631037631/default-profile-picture_sohcwq.png",
+		},
+		// imageUrl: String,
 		title: String,
 		text: {
 			type: String,
