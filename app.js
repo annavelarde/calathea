@@ -25,15 +25,15 @@ require("./config")(app);
 
 const projectName = "project2";
 const capitalized = (string) =>
-	string[0].toUpperCase() + string.slice(1).toLowerCase();
+  string[0].toUpperCase() + string.slice(1).toLowerCase();
 
 app.locals.title = `${capitalized(projectName)} created with IronLauncher`;
 
 app.use((req, res, next) => {
-	if (req.session.user) {
-		res.locals.user = req.session.user;
-	}
-	next();
+  if (req.session.user) {
+    res.locals.user = req.session.user;
+  }
+  next();
 });
 
 // 👇 Start handling routes here
