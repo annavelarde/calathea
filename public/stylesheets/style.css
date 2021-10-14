@@ -89,7 +89,7 @@ a:hover {
 .row {
 	background-color: white;
 	border-radius: 10px;
-	box-shadow: 12px 8px 22px;
+	/* box-shadow: 6px 4px 12px; */
 }
 .imgLogin {
 	border-top-left-radius: 10px;
@@ -613,4 +613,11 @@ body {
 .heighttext {
 	display: inline-block;
 	color: #8c9b98;
+}
+
+/* button left */
+.btn-edit-del {
+	display: flex;
+	align-items: center;
+	justify-content: right;
 }
