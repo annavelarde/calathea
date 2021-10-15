@@ -18,10 +18,10 @@ const userSchema = new Schema({
 		type: String,
 		required: true,
 	},
-	image: {
+	userImg: {
 		type: String,
-		default:
-			"https://res.cloudinary.com/dlfxinw9v/image/upload/v1631037631/default-profile-picture_sohcwq.png",
+		// default:
+		// 	"https://res.cloudinary.com/dlfxinw9v/image/upload/v1631037631/default-profile-picture_sohcwq.png",
 	},
 	location: {
 		type: String,
