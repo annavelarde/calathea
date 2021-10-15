@@ -89,7 +89,7 @@ a:hover {
 .row {
   background-color: white;
   border-radius: 10px;
-  box-shadow: 12px 8px 22px;
+  /* box-shadow: 12px 8px 22px; */
 }
 .imgLogin {
   border-top-left-radius: 10px;
