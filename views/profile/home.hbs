@@ -1,32 +1,48 @@
+<h2 class="title-homepage">Profile</h2>
 <div
-	class="container col col-xl-5 col-lg-7 col-md-8 col-sm-7 col-xs-7 justify-content-center text-center mb-4 mw-50 b-1px"
+  class="container col col-xl-5 col-lg-7 col-md-8 col-sm-7 col-xs-7 justify-content-center text-center mb-4 mw-50 b-1px"
 >
-	<div class="card">
-		<div class="d-flexbox p-3">
-			<img
-				src="/images/UserProfileImg.png"
-				class="img-fluid rounded-start"
-				alt="User image"
-			/>
-			<hr />
-		</div>
-		<div class="card-body">
-			<h3 class="card-title">{{user.username}}</h3>
-			<p class="card-text">{{user.location}}</p>
-			<p class="card-text">{{user.email}}</p>
-			<a href="/profile/update-profile" class="btn btn-secondary mb-3">Update
-				Profile</a>
-			<a
-				href="/profile/update-password"
-				class="btn btn-secondary mb-3"
-			>Update Password</a>
-			<a href="/profile/delete-account" class="btn btn-danger mb-3">Delete
-				Account</a>
-		</div>
-		<div class="card-footer text-muted">
-			2 days ago
-		</div>
-	</div>
+  <div class="card">
+    <div class="d-flexbox p-3">
+      <br />
+      <img
+        src="/images/UserProfileImg.png"
+        class="img-fluid rounded-start"
+        alt="User image"
+      />
+      <br />
+      <br />
+      <label><b>Profile Image:</b>
+        <br />
+        <form
+          method="POST"
+          action="/posts/create"
+          enctype="multipart/form-data"
+        >
+          <input
+            type="file"
+            name="post-cover-image"
+            class="form-control-file"
+          />
+        </form>
+      </label>
+      <hr />
+    </div>
+    <div class="card-body">
+      <h3 class="card-title">{{user.username}}</h3>
+      <p class="card-text">{{user.location}}</p>
+      <p class="card-text">{{user.email}}</p>
+      <a href="/profile/update-profile" class="btn btn-secondary mb-3">Update
+        Profile</a>
+      <a href="/profile/update-password" class="btn btn-secondary mb-3">Update
+        Password</a>
+      <a href="/profile/delete-account" class="btn btn-danger mb-3">Delete
+        Account</a>
+    </div>
+    <div class="card-footer text-muted">
+      2 days ago
+    </div>
+  </div>
 
 </div>
 

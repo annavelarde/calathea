@@ -6,6 +6,7 @@ const User = require("../models/User.model");
 const Post = require("../models/Post.model");
 const Comment = require("../models/Comments.model");
 const bcrypt = require("bcryptjs");
+const fileUploader = require("../config/cloudinary.config");
 
 router.get("/", isLoggedIn, (req, res) => {
   res.render("profile/home");
@@ -21,9 +22,15 @@ router.get("/update-profile", isLoggedIn, (req, res) => {
 
 router.post("/update-profile", isLoggedIn, (req, res) => {
   const { username, email, location } = req.body;
+
+  let imageUrl;
+  if (req.file) {
+    imageUrl = req.file.path;
+  }
+
   User.findByIdAndUpdate(
     req.session.user._id,
-    { username, email, location },
+    { username, email, location, imageUrl },
     { new: true }
   ).then((updatedUser) => {
     // updates the user in the cookie. keeps the user in the db and the user in the session in sync

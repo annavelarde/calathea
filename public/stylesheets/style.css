@@ -258,7 +258,7 @@ a:hover {
 #myCarousel .carousel-item a {
   background: #235347;
   font-size: 1rem;
-  color: #ffff;
+  /* color: #ffff; */
   padding: 10px 25px;
   display: inline-block;
   border-radius: 25px;
@@ -266,12 +266,16 @@ a:hover {
 
 .btn-submit,
 #myCarousel .carousel-item a:hover {
-  background: #9db197;
+  background: #235347;
   text-decoration: none;
   border-radius: 25px;
   border-style: none;
+  color: white;
 }
 
+.btn-submit a {
+  color: white;
+}
 #myCarousel .carousel-item h4 {
   -webkit-animation-name: fadeInLeft;
   animation-name: fadeInLeft;
@@ -313,13 +317,13 @@ a:hover {
 
 #myCarousel .carousel-item {
   height: 100%;
-  min-height: 550px;
+  /* min-height: 550px; */
 }
 
 #myCarousel {
   position: relative;
   z-index: 1;
-  background: rgb(225, 232, 236);
+  background: #eee;
   background-size: cover;
 }
 
@@ -497,6 +501,10 @@ a:hover {
 }
 
 /* ADD A COMMENT */
+body {
+  background-color: #eee;
+}
+
 body {
   background-color: #eee;
 }

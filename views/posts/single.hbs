@@ -1,12 +1,15 @@
-<div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+<div>
+  
+</div><div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <div class="mask flex-center">
+    {{!-- <div class="carousel-item active"> --}}
+    <div class="active">
+      <div class=" mask flex-center">
         <div class="container">
-          <h2>POST</h2>
+          <h2 class="title-homepage">POST</h2>
           <br />
           <div class="row align-items-center">
-            <div class="col-md-7 col-12 order-md-1 order-2">
+            <div class="col-md-7 col-8 order-md-1 order-2">
               {{#if post.title}}
               <h4>{{post.title}}</h4>
               <br />
@@ -24,13 +27,19 @@
               <br /><br />
               <hr />
               {{#if isAuthor}}
-              <div class="btn-edit-del">
-                <a href="/posts/{{post._id}}/edit">Edit Post</a>
-                <a href="/posts/{{post._id}}/delete">Delete Post</a>
-              </div>
+              <div class="small d-flex justify-content-end">
+              <a href="/posts/{{post._id}}/edit" class="d-flex align-items-center me-3">
+                <i class="bi bi-pencil-square mr-2"></i>
+                <p class="text-primary mb-0 mr-3">Edit Post</p>
+              </a>
+              <a href="/posts/{{post._id}}/delete" class="d-flex align-items-center me-3">
+                <i class="bi bi-trash-fill mr-2"></i>
+                <p class="text-primary mb-0">Delete Post</p>
+              </a>
+            </div>
               {{/if}}
               <br />
-              <a href="/">Go Back</a>
+              <div class="btn-submit"><a href="/">Go Back</a></div>
             </div>
             <div class="col-md-5 order-md-1 order-1"><img src="{{post.imageUrl}}" class="mx-auto" alt="slide" />
             </div>
@@ -39,50 +48,26 @@
     </div>
   </div>
 </div>
-
-<form method="POST" action="/comments/{{post._id}}/new">
-  <br /><br />
-  <h2>Add new comment</h2>
-  <label>
-    <input type="text" placeholder="Write your comment" name="text" />
-  </label>
-  <button type="submit">Submit</button>
-</form>
-
-{{#if post.comments}}
-<section class="comments">
-  <p>Comments:</p>
-  {{#each post.comments}}
-  <div style="font-size: .8rem; margin: 0">by:
-    {{this.author.username}}</div>
-  <p style="margin: 1rem">{{this.text}}</p>
-  {{#if this.isAuthor}}
-  <a 
-    href="/comments/{{../post._id}}/{{this._id}}/delete"
-    style="color: red"
-    >Delete comment</a>
-  {{/if}}
-  {{/each}}
-  </section>
-{{/if}}
-
-
-{{!-- NEW and FUNCTIONAL section COMMENTS --}}
-<section style="background-color: #eee;">
+<div>
+  {{!-- NEW and FUNCTIONAL section COMMENTS --}}
+  
+<section style="bodypost background-color: #fff;">
+  <br> <br> <br>
+  <h2 class="title-homepage">Comments</h2>
   <div class="container my-5 py-5">
-    <div class="row d-flex justify-content-center">
-      <div class="col-md-12 col-lg-10 col-xl-8">
-        <div class="card">
+    <div class="bodypost row d-flex justify-content-center">
+      <div class="card col-md-9 col-lg-9 col-xl-15">
+        <div class="container">
           <div class="card-body">
             <div class="d-flex flex-start align-items-center">
-              <img
+              {{!-- <img
                 class="rounded-circle shadow-1-strong mr-3"
                 src="https://mdbootstrap.com/img/Photos/Avatars/img%20(19).jpg"
                 alt="avatar"
                 width="60"
                 height="60"
-              />
-              <div>
+              /> --}}
+              {{!-- <div>
                 {{#if post.title}}
                   <h3>{{post.title}}</h3>
                 {{/if}}
@@ -93,25 +78,10 @@
                 {{/if}}
               </div>
             </div>
-
-            <p>{{post.text}}</p>
-
-            {{#if isAuthor}}
-            <div class="small d-flex justify-content-end">
-              <a href="/posts/{{post._id}}/edit" class="d-flex align-items-center me-3">
-                <i class="bi bi-pencil-square mr-2"></i>
-                <p class="text-primary mb-0 mr-3">Edit Post</p>
-              </a>
-              <a href="/posts/{{post._id}}/delete" class="d-flex align-items-center me-3">
-                <i class="bi bi-trash-fill mr-2"></i>
-                <p class="text-primary mb-0">Delete Post</p>
-              </a>
-            </div>
-            {{/if}}
+            
+            <p>{{post.text}}</p> --}}
           </div>
-
-
-          <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
+          <div class="card-footer py-3 border-0" style="background-color: #fff;">
             <div class="d-flex flex-start w-100">
               <img
                 class="rounded-circle shadow-1-strong me-3 mr-3"
@@ -138,31 +108,61 @@
                 </form>
               </div>
             </div>
-
-{{#if post.comments}}
-  <section class="comments">
-  <h3>Comments:</h3>
-  {{#each post.comments}}
-  <div style="font-size: .8rem; margin: 0">by: {{this.author.username}}</div>
-  <p style="margin: 1rem">{{this.text}}</p>
-    {{#if this.isAuthor}}
-
-            <div class="small d-flex justify-content-end">
-              
+            {{#if post.comments}}
+              <section class="comments">
+              <h3>Comments:</h3>
+              <br>
+              {{#each post.comments}}
+              <div style="font-size: .8rem; margin: 0">by: {{this.author.username}}</div>
+              <p style="margin: 1rem">{{this.text}}</p>
+                {{#if this.isAuthor}}
+              <div class="small d-flex justify-content-end">
               <a href="/comments/{{../post._id}}/{{this._id}}/delete" class="d-flex align-items-center me-3">
                 <i class="bi bi-trash-fill mr-2"></i>
-                <p class="text-primary mb-0">Delete comment</p>
+                <p class="text-primary mb-0">delete</p>
               </a>
             </div>
-    {{/if}}
-  <hr>
-  {{/each}}
-  </section>
-{{/if}} 
-
+              {{/if}}
+            <hr>
+            {{/each}}
+            </section>
+          {{/if}} 
+          <br><br>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+</div>
+
+
+
+
+
+{{!-- 
+<form method="POST" action="/comments/{{post._id}}/new">
+  <br /><br />
+  <h2>Add new comment</h2>
+  <label>
+    <input type="text" placeholder="Write your comment" name="text" />
+  </label>
+  <button type="submit">Submit</button>
+</form>
+
+{{#if post.comments}}
+<section class="comments">
+  <p>Comments:</p>
+  {{#each post.comments}}
+  <div style="font-size: .8rem; margin: 0">by:
+    {{this.author.username}}</div>
+  <p style="margin: 1rem">{{this.text}}</p>
+  {{#if this.isAuthor}}
+  <a 
+    href="/comments/{{../post._id}}/{{this._id}}/delete"
+    style="color: red"
+    >Delete comment</a>
+  {{/if}}
+  {{/each}}
+  </section>
+{{/if}} --}}
