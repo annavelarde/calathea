@@ -85,7 +85,7 @@
             <div class="d-flex flex-start w-100">
               <img
                 class="rounded-circle shadow-1-strong me-3 mr-3"
-                src="https://mdbootstrap.com/img/Photos/Avatars/img%20(19).jpg"
+                src="\images\UserProfileImg.png"
                 alt="avatar"
                 width="40"
                 height="40"
@@ -113,7 +113,7 @@
               <h3>Comments:</h3>
               <br>
               {{#each post.comments}}
-              <div style="font-size: .8rem; margin: 0">by: {{this.author.username}}</div>
+              <div style="font-size: .8rem; margin: 0">by: {{a.user}}</div>
               <p style="margin: 1rem">{{this.text}}</p>
                 {{#if this.isAuthor}}
               <div class="small d-flex justify-content-end">
