@@ -10,22 +10,19 @@
         class="img-fluid rounded-start"
         alt="User image"
       />
-      <br />
-      <br />
-      <label><b>Profile Image:</b>
-        <br />
-        <form
-          method="POST"
-          action="/posts/create"
-          enctype="multipart/form-data"
-        >
-          <input
-            type="file"
-            name="post-cover-image"
-            class="form-control-file"
-          />
-        </form>
-      </label>
+      {{! <form method="POST" action="/posts/create" enctype="multipart/form-data">
+        <div class="form-group">
+          <br />
+          <label><b>Image Profile:</b>
+            <input
+              type="file"
+              name="post-cover-image"
+              class="form-control-file"
+            />
+          </label>
+          <button class="btn btn-secondary mb-3" type="submit">Update</button>
+        </div>
+      </form> }}
       <hr />
     </div>
     <div class="card-body">

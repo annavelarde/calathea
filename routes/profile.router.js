@@ -12,32 +12,42 @@ router.get("/", isLoggedIn, (req, res) => {
   res.render("profile/home");
 });
 
-router.get("/update-profile", isLoggedIn, (req, res) => {
-  res.render("profile/update-profile", {
-    username: req.session.user.username, //check it fail!!!
-    email: req.session.user.email,
-    location: req.session.user.location,
-  });
-});
-
-router.post("/update-profile", isLoggedIn, (req, res) => {
-  const { username, email, location } = req.body;
-
-  let imageUrl;
-  if (req.file) {
-    imageUrl = req.file.path;
+router.get(
+  "/update-profile",
+  isLoggedIn,
+  // fileUploader.single("post-cover-image"),
+  (req, res) => {
+    res.render("profile/update-profile", {
+      username: req.session.user.username, //check it fail!!!
+      email: req.session.user.email,
+      location: req.session.user.location,
+    });
   }
+);
 
-  User.findByIdAndUpdate(
-    req.session.user._id,
-    { username, email, location, imageUrl },
-    { new: true }
-  ).then((updatedUser) => {
-    // updates the user in the cookie. keeps the user in the db and the user in the session in sync
-    req.session.user = updatedUser;
-    res.redirect("/profile");
-  });
-});
+router.post(
+  "/update-profile",
+  isLoggedIn,
+  // fileUploader.single("post-cover-image"),
+  (req, res) => {
+    const { username, email, location } = req.body;
+
+    // let imageUrl;
+    // if (req.file) {
+    //   imageUrl = req.file.path;
+    // }
+
+    User.findByIdAndUpdate(
+      req.session.user._id,
+      { username, email, location },
+      { new: true }
+    ).then((updatedUser) => {
+      // updates the user in the cookie. keeps the user in the db and the user in the session in sync
+      req.session.user = updatedUser;
+      res.redirect("/profile");
+    });
+  }
+);
 
 router.get("/update-password", isLoggedIn, (req, res) => {
   res.render("profile/update-password");
